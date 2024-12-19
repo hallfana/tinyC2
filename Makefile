@@ -2,11 +2,11 @@ NAME=tinyC2
 
 all: $(NAME)
 
-$(NAME): $(NAME).c
+$(NAME):
 	make -C client
 	make -C server
-	mv client/client ./$(NAME)-client
-	mv server/server ./$(NAME)-server
+	mv client/$(NAME)-client ./$(NAME)-client
+	mv server/$(NAME)-server ./$(NAME)-server
 
 clean:
 	make -C client clean
