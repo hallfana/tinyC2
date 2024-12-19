@@ -1,7 +1,7 @@
 NAME=tinyC2
 
 CC=gcc
-CC_FLAGS= -Wall -Wextra -Werror -g
+CC_FLAGS= -Wall -Wextra -Werror
 
 SRC= ./src/main.c \
 	 ./src/server.c \
@@ -13,7 +13,7 @@ OBJ= $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)-server
+	$(CC) $(OBJ) -g -fsanitize=address -o $(NAME)-server
 
 %.o: %.c
 	$(CC) -c $< -o $@ $(CC_FLAGS)
