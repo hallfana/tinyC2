@@ -11,10 +11,10 @@ $(NAME):
 clean:
 	make -C client clean
 	make -C server clean
-	rm -f $(NAME)-client $(NAME)-server
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME)-client
+	rm -f $(NAME)-server
 
 re: clean all
 
