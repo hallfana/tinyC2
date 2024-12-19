@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/19 22:10:58 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:22:17 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,15 @@
 
 /* ------------------------- STRUCT ------------------------- */
 
+typedef struct in_addr	t_in_addr;
+typedef struct sockaddr	t_sockaddr;
+typedef struct sockaddr_in	t_sockaddr_in;
+
 typedef struct s_server
 {
 	int					server_fd;
-	struct in_addr		*server_ip;
-	struct sockaddr_in	*srv;
+	t_in_addr		*server_ip;
+	t_sockaddr_in	*srv;
 }				t_server;
 
 /* ------------------------- FUNCTION ------------------------- */

@@ -6,21 +6,21 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/19 22:13:03 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:22:14 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/server.h"
 
-void	_tc_allocate_server(t_server *server)
+static void	_tc_allocate_server(t_server *server)
 {
-	server->srv = (struct sockaddr_in *)malloc(sizeof(struct sockaddr_in));
+	server->srv = (t_sockaddr_in *)malloc(sizeof(t_sockaddr_in));
 	if (server->srv == NULL)
 	{
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error("Error allocating memory for server\n");
 	}
-	server->server_ip = (struct in_addr*)malloc(sizeof(struct in_addr));
+	server->server_ip = (t_in_addr*)malloc(sizeof(t_in_addr));
 	if (server->server_ip == NULL)
 	{
 		if (DEBUG && DEBUG_LEVEL >= 1)
@@ -28,7 +28,7 @@ void	_tc_allocate_server(t_server *server)
 	}
 }
 
-void	_tc_populate_server_ip(t_server *server)
+static void	_tc_populate_server_ip(t_server *server)
 {
 	int			ret;
 
@@ -56,7 +56,7 @@ int _tc_init_server(t_server *server)
 			_tc_error("Error creating socket\n");
 		return (-1);
 	}
-	ret = bind(server->server_fd, (struct sockaddr *)server->srv, sizeof(*server->srv));
+	ret = bind(server->server_fd, (t_sockaddr *)server->srv, sizeof(*server->srv));
 	if (ret == -1)
 	{
 		if (DEBUG && DEBUG_LEVEL >= 1)
