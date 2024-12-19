@@ -19,7 +19,9 @@ fclean: clean
 re: clean all
 
 dev:
+	make fclean
 	git add .; git commit -m "dev"; git push
 	make re
+	make clean
 
 .PHONY: all clean fclean re
