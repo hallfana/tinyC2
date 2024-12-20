@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:29:43 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:48:29 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,20 @@
 #  define _TC_SERVER_PORT 8080
 # endif
 
+# ifndef _TC_SERVER_BACKLOG
+#  define _TC_SERVER_BACKLOG 16
+# endif
+
 /* ------------------------- STRUCT ------------------------- */
 
-typedef struct in_addr	t_in_addr;
-typedef struct sockaddr	t_sockaddr;
+typedef struct in_addr		t_in_addr;
+typedef struct sockaddr		t_sockaddr;
 typedef struct sockaddr_in	t_sockaddr_in;
 
 typedef struct s_server
 {
-	int					server_fd;
+	int				server_fd;
+	int				thread_id;
 	t_in_addr		*server_ip;
 	t_sockaddr_in	*srv;
 }				t_server;
@@ -86,4 +91,7 @@ void	_tc_clean_exit(t_server *server, int status);
 
 //		format.c
 char	*_tc_format(t_server *server, char *fmt, ...);
+
+//		listener.c
+void	_tc_init_listener(t_server *server)
 #endif
