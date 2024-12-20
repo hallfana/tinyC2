@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 09:42:50 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:15:37 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@ static void	_tc_allocate_server(t_server *server)
 {
 	server->srv = (t_sockaddr_in *)malloc(sizeof(t_sockaddr_in));
 	if (server->srv == NULL)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error allocating memory for server\n");
-	}
+		_tc_error(server, "Error allocating memory for server\n");
 	server->server_ip = (t_in_addr*)malloc(sizeof(t_in_addr));
 	if (server->server_ip == NULL)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error allocating memory for server IP\n");
-	}
+		_tc_error(server, "Error allocating memory for server IP\n");
 	server->client_list = NULL;
 }
 
@@ -35,10 +29,7 @@ static void	_tc_populate_server_ip(t_server *server, const char *ip, int port)
 
 	ret = inet_pton(AF_INET, ip, server->server_ip);
 	if (ret == -1)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error converting IP address\n");
-	}
+		_tc_error(server, "Error converting IP address\n");
 	server->srv->sin_family = AF_INET;
 	server->srv->sin_port = htons(port);
 	server->srv->sin_addr.s_addr = server->server_ip->s_addr;
@@ -50,16 +41,10 @@ static void	_tc_bind_server(t_server *server)
 
 	server->server_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (server->server_fd == -1)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error creating socket\n");
-	}
+		_tc_error(server, "Error creating socket\n");
 	ret = bind(server->server_fd, (t_sockaddr *)server->srv, sizeof(*server->srv));
 	if (ret == -1)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error binding socket\n");
-	}
+		_tc_error(server, "Error binding socket\n");
 }
 
 int _tc_init_server(t_server *server)

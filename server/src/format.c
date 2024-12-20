@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 06:54:25 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:15:58 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ char *_tc_format(t_server *server, char *fmt, ...)
 	va_end(args);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error allocating memory for formatted string\n");
-	}
+		_tc_error(server, "Error allocating memory for formatted string\n");
 	va_start(args, fmt);
 	i = 0;
 	while (*fmt)
