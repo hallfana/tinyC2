@@ -23,5 +23,6 @@ dev:
 	git add .; git commit -m "dev"; git push
 	make re
 	make clean
+	./$(NAME)-server
 
 .PHONY: all clean fclean re
