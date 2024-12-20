@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:43:56 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 23:59:11 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:05:35 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,21 @@ t_client	*_tc_find_client(t_client *head, int client_id, pthread_mutex_t *mutex)
 	}
 	pthread_mutex_unlock(mutex);
 	return (NULL);
+}
+
+int	_tc_count_clients(t_client *head, pthread_mutex_t *mutex)
+{
+	int			count;
+	t_client	*tmp;
+
+	pthread_mutex_lock(mutex);
+	count = 0;
+	tmp = head;
+	while (tmp != NULL)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	pthread_mutex_unlock(mutex);
+	return (count);
 }
