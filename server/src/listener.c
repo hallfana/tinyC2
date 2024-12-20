@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:51:18 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:51:57 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void _tc_init_main_thread(t_server *server)
 {
 	pthread_t	thread;
 
-	if (pthread_create(&thread, NULL, (void *(*)(void *))_tc_accept_loop, server) != 0)
+	if (pthread_create(&thread, NULL, (void *(*)(t_server *))_tc_accept_loop, server) != 0)
 	{
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error(server, "Error creating main thread\n");
