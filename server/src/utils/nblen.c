@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   nblen.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 03:22:26 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 03:30:42 by hallfana         ###   ########.fr       */
+/*   Created: 2024/12/20 04:18:01 by hallfana          #+#    #+#             */
+/*   Updated: 2024/12/20 04:18:09 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/server.h"
 
-static void	_tc_cleanup_server(t_server *server)
+int	_tc_nbrlen(int n)
 {
-	if (server->srv)
-		free(server->srv);
-	if (server->server_ip)
-		free(server->server_ip);
-}
+	int len;
 
-void	_tc_clean_exit(t_server *server, int status)
-{
-	if (server)
-		_tc_cleanup_server(server);
-	exit(status);
+	len = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		len++;
+		n = -n;
+	}
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }

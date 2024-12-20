@@ -5,8 +5,9 @@ CC_FLAGS= -Wall -Wextra -Werror -lpthread
 
 SRC= ./src/main.c \
 	 ./src/server.c \
-	 ./src/utils.c \
-	 ./src/error.c \
+	 ./src/utils/strlen.c \
+	 ./src/utils/nblen.c \
+	 ./src/print.c \
 	 ./src/cleanup.c \
 
 OBJ= $(SRC:.c=.o)

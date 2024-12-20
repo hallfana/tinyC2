@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 03:29:36 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:18:22 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <netinet/in.h>
 # include <arpa/inet.h>
 # include <pthread.h>
+# include <stdarg.h>
 
 /* ------------------------- DEFINE ------------------------- */
 
@@ -69,9 +70,12 @@ typedef struct s_server
 
 //		utils.c
 int		_tc_strlen(char *str);
+int		_tc_nbrlen(int n);
 
-//		error.c
+//		print.c
 void	_tc_error(t_server *server, char *msg);
+void	_tc_warning(t_server *server, char *msg);
+void	_tc_info(t_server *server, char *msg);
 
 //		server.c
 int 	_tc_init_server(t_server *server);
