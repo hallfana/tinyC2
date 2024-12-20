@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:31:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 12:08:13 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 23:51:31 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	*_tc_handler(void *param)
 	str = _tc_format(server, "Client %d connected\n", client->client_fd);
 	_tc_info(str);
 	free(str);
+	_tc_add_client(&server->client_list, client);
 	while (1)
 	{
 		pause();
