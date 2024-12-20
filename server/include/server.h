@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:48:29 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:50:17 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ void	_tc_clean_exit(t_server *server, int status);
 char	*_tc_format(t_server *server, char *fmt, ...);
 
 //		listener.c
-void	_tc_init_listener(t_server *server)
+void	_tc_init_listener(t_server *server);
 #endif
