@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:13:31 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:15:27 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void *_tc_debug_print(void *param)
 			write(1, str, _tc_strlen(str));
 			free(str);
 			tmp = tmp->next;
+		}
+		if (_tc_count_clients(server->client_list, server->client_list_mutex) > 0)
+		{
+			str = _tc_format(server, "╚╡ DEBUG END\n");
+			write(1, str, _tc_strlen(str));
+			free(str);
 		}
 		sleep(5);
 	}
