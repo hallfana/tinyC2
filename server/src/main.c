@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:06:15 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:06:51 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@ void *_tc_debug_print(void *param)
 	char		*str;
 
 	server = (t_server *)param;
-	if (_tc_count_clients(server->client_list, server->client_list_mutex) > 0)
-	{
-		str = _tc_format(server, "\n______________________DEBUG______________________\n");
-		write(1, str, _tc_strlen(str));
-		free(str);
-	}
 	while (1)
 	{
-		// print each client stored in the linked list
+		if (_tc_count_clients(server->client_list, server->client_list_mutex) > 0)
+		{
+			str = _tc_format(server, "\n______________________DEBUG______________________\n");
+			write(1, str, _tc_strlen(str));
+			free(str);
+		}
 		t_client *tmp = server->client_list;
 		while (tmp != NULL)
 		{
