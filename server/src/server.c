@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:33:56 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:35:25 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ static void	_tc_allocate_server(t_server *server)
 	}
 }
 
-static void	_tc_populate_server_ip(t_server *server)
+static void	_tc_populate_server_ip(t_server *server, const char *ip, int port)
 {
 	int			ret;
 
-	ret = inet_pton(AF_INET, _TC_SERVER_ADDRESS, server->server_ip);
+	ret = inet_pton(AF_INET, ip, server->server_ip);
 	if (ret == -1)
 	{
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error(server, "Error converting IP address\n");
 	}
 	server->srv->sin_family = AF_INET;
-	server->srv->sin_port = htons(_TC_SERVER_PORT);
+	server->srv->sin_port = htons(port);
 	server->srv->sin_addr.s_addr = server->server_ip->s_addr;
 }
 
@@ -68,7 +68,7 @@ static void	_tc_bind_server(t_server *server)
 int _tc_init_server(t_server *server)
 {
 	_tc_allocate_server(server);
-	_tc_populate_server_ip(server);
+	_tc_populate_server_ip(server, _TC_SERVER_ADDRESS, _TC_SERVER_PORT);
 	_tc_bind_server(server);
 	return (0);
 }
