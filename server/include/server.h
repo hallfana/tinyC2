@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 23:59:13 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:02:58 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void		_tc_init_listener(t_server *server);
 //			client/linked_list.c
 void		_tc_add_client(t_client **head, t_client *client, pthread_mutex_t *mutex);
 void		_tc_remove_client(t_client **head, t_client *client, pthread_mutex_t *mutex);
-t_client	*_tc_find_client(t_client *head, int client_id);
+t_client	*_tc_find_client(t_client *head, int client_id, pthread_mutex_t *mutex);
 
 //			client/handler.c
 void		*_tc_handler(void *param);
