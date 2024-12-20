@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:25:35 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:25:41 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # endif
 
 # ifndef _TC_SERVER_PORT
-#  define _TC_SERVER_PORT 9999
+#  define _TC_SERVER_PORT 8080
 # endif
 
 /* ------------------------- STRUCT ------------------------- */
