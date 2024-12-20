@@ -10,6 +10,7 @@ SRC= ./src/main.c \
 	 ./src/print.c \
 	 ./src/cleanup.c \
 	 ./src/format.c \
+	 ./src/listener.c \
 
 OBJ= $(SRC:.c=.o)
 
