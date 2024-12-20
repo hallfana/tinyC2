@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:50:04 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:51:18 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ static void _tc_listen_server(t_server *server)
 	str = _tc_format(server, "Server listening on %s:%d\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port));
 	_tc_info(str);
 	free(str);
-}
-
-static void _tc_init_main_thread(t_server *server)
-{
-	pthread_t	thread;
-
-	if (pthread_create(&thread, NULL, (void *(*)(void *))_tc_accept_loop, server) != 0)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error creating main thread\n");
-	}
 }
 
 static void _tc_accept_loop(t_server *server)
@@ -61,6 +50,17 @@ static void _tc_accept_loop(t_server *server)
 			_tc_info(str);
 			free(str);
 		}
+	}
+}
+
+static void _tc_init_main_thread(t_server *server)
+{
+	pthread_t	thread;
+
+	if (pthread_create(&thread, NULL, (void *(*)(void *))_tc_accept_loop, server) != 0)
+	{
+		if (DEBUG && DEBUG_LEVEL >= 1)
+			_tc_error(server, "Error creating main thread\n");
 	}
 }
 
