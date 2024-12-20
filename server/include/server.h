@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:18:22 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:19:43 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int		_tc_nbrlen(int n);
 
 //		print.c
 void	_tc_error(t_server *server, char *msg);
-void	_tc_warning(t_server *server, char *msg);
-void	_tc_info(t_server *server, char *msg);
+void	_tc_warning(char *msg);
+void	_tc_info(char *msg);
 
 //		server.c
 int 	_tc_init_server(t_server *server);

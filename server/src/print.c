@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:41:31 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 03:33:18 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:19:30 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	_tc_error(t_server *server, char *msg)
 	_tc_clean_exit(server, 1);
 }
 
-void	_tc_warning(t_server *server, char *msg)
+void	_tc_warning(char *msg)
 {
 	if (DEBUG && DEBUG_LEVEL >= 2)
 	{
@@ -33,7 +33,7 @@ void	_tc_warning(t_server *server, char *msg)
 	}
 }
 
-void	_tc_info(t_server *server, char *msg)
+void	_tc_info(char *msg)
 {
 	if (DEBUG && DEBUG_LEVEL >= 3)
 	{
