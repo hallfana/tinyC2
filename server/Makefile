@@ -7,7 +7,7 @@ SRC= ./src/main.c \
 	 ./src/server.c \
 	 ./src/utils/strlen.c \
 	 ./src/utils/nblen.c \
-	 ./stc/utils/hash.c \
+	 ./src/utils/hash.c \
 	 ./src/print.c \
 	 ./src/cleanup.c \
 	 ./src/format.c \
