@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 03:26:18 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 03:29:36 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/socket.h>
 # include <netinet/in.h>
 # include <arpa/inet.h>
+# include <pthread.h>
 
 /* ------------------------- DEFINE ------------------------- */
 
