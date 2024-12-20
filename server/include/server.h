@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 09:15:01 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:07:42 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,34 +64,53 @@ typedef struct in_addr		t_in_addr;
 typedef struct sockaddr		t_sockaddr;
 typedef struct sockaddr_in	t_sockaddr_in;
 
+typedef struct s_client
+{
+	int				client_id;
+	int				client_fd;
+	pthread_t		*client_thread;
+	t_sockaddr_in	*client;
+	struct s_client	*next;
+}				t_client;
+
 typedef struct s_server
 {
 	int				server_fd;
 	int				thread_id;
 	t_in_addr		*server_ip;
 	t_sockaddr_in	*srv;
+	t_client		*client_list;
+	pthread_mutex_t	*client_list_mutex;
 }				t_server;
 
 /* ------------------------- FUNCTION ------------------------- */
 
-//		utils.c
-int		_tc_strlen(char *str);
-int		_tc_nbrlen(int n);
+//			utils.c
+int			_tc_strlen(char *str);
+int			_tc_nbrlen(int n);
 
-//		print.c
-void	_tc_error(t_server *server, char *msg);
-void	_tc_warning(char *msg);
-void	_tc_info(char *msg);
+//			print.c
+void		_tc_error(t_server *server, char *msg);
+void		_tc_warning(char *msg);
+void		_tc_info(char *msg);
 
-//		server.c
-int 	_tc_init_server(t_server *server);
+//			server.c
+int 		_tc_init_server(t_server *server);
 
-//		cleanup.c
-void	_tc_clean_exit(t_server *server, int status);
+//			cleanup.c
+void		_tc_clean_exit(t_server *server, int status);
 
-//		format.c
-char	*_tc_format(t_server *server, char *fmt, ...);
+//			format.c
+char		*_tc_format(t_server *server, char *fmt, ...);
 
-//		listener.c
-void	_tc_init_listener(t_server *server);
+//			listener.c
+void		_tc_init_listener(t_server *server);
+
+//			client/linked_list.c
+void		_tc_add_client(t_client **head, t_client *client);
+void		_tc_remove_client(t_client **head, t_client *client);
+t_client	*_tc_find_client(t_client *head, int client_id);
+
+//			client/handler.c
+void		_tc_handler(t_server *server, t_client *client);
 #endif

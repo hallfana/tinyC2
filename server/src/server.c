@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 06:06:37 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 09:42:50 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	_tc_allocate_server(t_server *server)
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error(server, "Error allocating memory for server IP\n");
 	}
+	server->client_list = NULL;
 }
 
 static void	_tc_populate_server_ip(t_server *server, const char *ip, int port)
