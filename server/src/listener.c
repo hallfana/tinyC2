@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:52:16 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:54:30 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ static void _tc_listen_server(t_server *server)
 	free(str);
 }
 
-static void _tc_accept_loop(t_server *server)
+static void *_tc_accept_loop(void *arg)
 {
-	int				client_fd;
+	t_server		*server;
 	t_sockaddr_in	client;
 	socklen_t		client_len;
+	int				client_fd;
 	char			*str;
 
+	server = (t_server *)arg;
 	client_len = sizeof(client);
 	while (1)
 	{
@@ -51,13 +53,14 @@ static void _tc_accept_loop(t_server *server)
 			free(str);
 		}
 	}
+	return (NULL);
 }
 
 static void _tc_init_main_thread(t_server *server)
 {
 	pthread_t	thread;
 
-	if (pthread_create(&thread, NULL, (void (*)(t_server *))_tc_accept_loop, server) != 0)
+	if (pthread_create(&thread, NULL, _tc_accept_loop, server) != 0)
 	{
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error(server, "Error creating main thread\n");
