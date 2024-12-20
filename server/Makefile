@@ -11,6 +11,8 @@ SRC= ./src/main.c \
 	 ./src/cleanup.c \
 	 ./src/format.c \
 	 ./src/listener.c \
+	 ./src/client/handler.c \
+	 ./src/client/linked_list.c \
 
 OBJ= $(SRC:.c=.o)
 
