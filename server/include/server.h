@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:37:57 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:42:23 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_thread_param
 int			_tc_strlen(char *str);
 int			_tc_nbrlen(int n);
 int			_tc_nbrlen_long(long n);
+long		_tc_sdbm_hash(char *str);
 
 //			print.c
 void		_tc_error(t_server *server, char *msg);
