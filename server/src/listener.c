@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listener.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 05:04:16 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 06:06:03 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void *_tc_accept_loop(void *arg)
 	return (NULL);
 }
 
-static void _tc_init_main_thread(t_server *server)
+static void _tc_init_listener_thread(t_server *server)
 {
 	pthread_t	thread;
 
@@ -70,5 +70,5 @@ static void _tc_init_main_thread(t_server *server)
 void _tc_init_listener(t_server *server)
 {
 	_tc_listen_server(server);
-	_tc_init_main_thread(server);
+	_tc_init_listener_thread(server);
 }
