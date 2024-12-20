@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:23:23 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:25:13 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	_tc_populate_server_ip(t_server *server)
 
 static void	_tc_bind_server(t_server *server)
 {
-	int	ret;
+	int		ret;
+	char	*str;
 
 	server->server_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (server->server_fd == -1)
@@ -59,7 +60,9 @@ static void	_tc_bind_server(t_server *server)
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error(server, "Error binding socket\n");
 	}
-	_tc_info(_tc_format(server, "Listening on port %s:%d\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port)));
+	str = _tc_format(server, "Listening on port %s:%d\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port));
+	_tc_info(str);
+	free(str);
 }
 
 int _tc_init_server(t_server *server)
