@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:27:53 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:28:38 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static void	_tc_bind_server(t_server *server)
 			_tc_error(server, "Error binding socket\n");
 	}
 	str = _tc_format(server, "Server succesfully binded on %s:%d!\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port));
-	_tc_info(str);
+	printf("Formatted string: %s\n", str);
+	tc_info(str);
 	free(str);
 }
 
