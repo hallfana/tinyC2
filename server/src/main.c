@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:07:50 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:13:31 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void *_tc_debug_print(void *param)
 	{
 		if (_tc_count_clients(server->client_list, server->client_list_mutex) > 0)
 		{
-			str = _tc_format(server, "\n ._____________________DEBUG______________________\n");
+			str = _tc_format(server, "\n╔═════════════════════════════════╡ DEBUG MSG\n");
 			write(1, str, _tc_strlen(str));
 			free(str);
 		}
 		t_client *tmp = server->client_list;
 		while (tmp != NULL)
 		{
-			str = _tc_format(server, "| %d | %s:%d\n", tmp->client_fd, inet_ntoa(tmp->client->sin_addr), ntohs(tmp->client->sin_port));
+			str = _tc_format(server, "╠ %d | %s:%d\n", tmp->client_fd, inet_ntoa(tmp->client->sin_addr), ntohs(tmp->client->sin_port));
 			write(1, str, _tc_strlen(str));
 			free(str);
 			tmp = tmp->next;
