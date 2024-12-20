@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/19 23:16:35 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 03:25:09 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ typedef struct s_server
 int		_tc_strlen(char *str);
 
 //		error.c
-void	_tc_error(char *msg);
+void	_tc_error(t_server *server, char *msg);
 
 //		server.c
 int 	_tc_init_server(t_server *server);
+
+//		cleanup.c
+void	_tc_clean_exit(t_server *server, int status);
 #endif
