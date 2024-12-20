@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/19 22:36:03 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 03:26:55 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int main(void)
 {
 	t_server server;
 	_tc_init_server(&server);
-	return (0);
+	_tc_clean_exit(&server, 0);
 }
