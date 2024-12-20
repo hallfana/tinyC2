@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:40:19 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 03:33:47 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:23:23 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	_tc_bind_server(t_server *server)
 		if (DEBUG && DEBUG_LEVEL >= 1)
 			_tc_error(server, "Error binding socket\n");
 	}
+	_tc_info(_tc_format(server, "Listening on port %s:%d\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port)));
 }
 
 int _tc_init_server(t_server *server)

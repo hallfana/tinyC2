@@ -6,13 +6,13 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:17:37 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:22:02 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/server.h"
 
-int		_tc_format_len(char *fmt, va_list args)
+static int		_tc_format_len(char *fmt, va_list args)
 {
 	int		len;
 	int		i;
@@ -44,25 +44,41 @@ char	*_tc_format(t_server *server, char *fmt, ...)
 	int		i;
 
 	va_start(args, fmt);
-	len = 0;
-	i = 0;
-	while (fmt[i])
+	len = _tc_format_len(fmt, args);
+	va_end(args);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 	{
-		if (fmt[i] == '%')
+		if (DEBUG && DEBUG_LEVEL >= 1)
+			_tc_error(server, "Error allocating memory for formatted string\n");
+	}
+	va_start(args, fmt);
+	i = 0;
+	while (*fmt)
+	{
+		if (*fmt == '%')
 		{
-			if (fmt[i + 1] == 's')
+			if (*(fmt + 1) == 's')
 			{
-				len += _tc_strlen(va_arg(args, char *));
-				i++;
+				char *s = va_arg(args, char *);
+				while (*s)
+					str[i++] = *s++;
 			}
-			else if (fmt[i + 1] == 'd')
+			else if (*(fmt + 1) == 'd')
 			{
-				len += _tc_nbrlen(va_arg(args, int));
-				i++;
+				int n = va_arg(args, int);
+				int j = _tc_nbrlen(n);
+				while (j--)
+				{
+					str[i + j] = n % 10 + '0';
+					n /= 10;
+				}
+				i += _tc_nbrlen(n);
 			}
+			fmt++;
 		}
 		else
-			len++;
-		i++;
+			str[i++] = *fmt;
+		fmt++;
 	}
 }
