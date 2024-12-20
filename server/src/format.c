@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:22:02 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:24:18 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,7 @@ char	*_tc_format(t_server *server, char *fmt, ...)
 			str[i++] = *fmt;
 		fmt++;
 	}
+	str[i] = '\0';
+	va_end(args);
+	return (str);
 }
