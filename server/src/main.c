@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:02:36 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:04:05 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void *_tc_debug_print(void *param)
 	char		*str;
 
 	server = (t_server *)param;
-	str = _tc_format(server, "\n______________________DEBUG______________________\n");
-	write(1, str, _tc_strlen(str));
-	free(str);
+	if (server->client_list != NULL)
+	{
+		str = _tc_format(server, "\n______________________DEBUG______________________\n");
+		write(1, str, _tc_strlen(str));
+		free(str);
+	}
 	while (1)
 	{
 		// print each client stored in the linked list
