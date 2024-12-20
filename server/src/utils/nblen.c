@@ -6,11 +6,11 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 04:18:01 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:18:09 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:18:59 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/server.h"
+#include "../../include/server.h"
 
 int	_tc_nbrlen(int n)
 {

@@ -6,11 +6,11 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:42:29 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 04:17:55 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 04:18:56 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/server.h"
+#include "../../include/server.h"
 
 int	_tc_strlen(char *str)
 {
