@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 10:07:46 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:11:52 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ static void _tc_listen_server(t_server *server)
 
 	ret = listen(server->server_fd, _TC_SERVER_BACKLOG);
 	if (ret == -1)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error listening to server\n");	
-	}
+		_tc_error(server, "Error listening to server\n");	
 	str = _tc_format(server, "Server listening on %s:%d\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port));
 	_tc_info(str);
 	free(str);
@@ -35,6 +32,7 @@ static void *_tc_accept_loop(void *arg)
 	socklen_t		client_len;
 	t_client		*new_client;
 	pthread_t 		*client_thread;
+	t_thread_param	thread_param;
 	int				client_fd;
 	char			*str;
 
@@ -44,10 +42,7 @@ static void *_tc_accept_loop(void *arg)
 	{
 		client_fd = accept(server->server_fd, (t_sockaddr *)&client, &client_len);
 		if (client_fd == -1)
-		{
-			if (DEBUG && DEBUG_LEVEL >= 1)
-				_tc_warning("Error accepting client\n");
-		}
+			_tc_warning("Error accepting client\n");
 		else
 		{
 			str = _tc_format(server, "Client connected from %s:%d\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
@@ -56,11 +51,8 @@ static void *_tc_accept_loop(void *arg)
 			new_client = (t_client *)malloc(sizeof(t_client));
 			if (new_client == NULL)
 			{
-				if (DEBUG && DEBUG_LEVEL >= 1)
-				{
-					_tc_warning("Error allocating memory for client\n");
-					return (NULL);
-				}
+				_tc_warning("Error allocating memory for client\n");
+				return (NULL);
 			}
 			new_client->client_fd = client_fd;
 			new_client->client = &client;
@@ -68,14 +60,17 @@ static void *_tc_accept_loop(void *arg)
 			client_thread = (pthread_t *)malloc(sizeof(pthread_t));
 			if (client_thread == NULL)
 			{
-				if (DEBUG && DEBUG_LEVEL >= 1)
-				{
-					_tc_warning("Error allocating memory for client thread\n");
-					return (NULL);
-				}
+				_tc_warning("Error allocating memory for client thread\n");
+				return (NULL);
 			}
 			new_client->client_thread = client_thread;
-			pthread_create(client_thread, NULL, _tc_handler, new_client);
+			thread_param.server = server;
+			thread_param.client = new_client;
+			if (pthread_create(client_thread, NULL, _tc_handler, &thread_param) != 0)
+			{
+				_tc_warning("Error creating client thread\n");
+				return (NULL);
+			}
 		}
 	}
 	return (NULL);
@@ -86,10 +81,7 @@ static void _tc_init_listener_thread(t_server *server)
 	pthread_t	thread;
 
 	if (pthread_create(&thread, NULL, _tc_accept_loop, server) != 0)
-	{
-		if (DEBUG && DEBUG_LEVEL >= 1)
-			_tc_error(server, "Error creating main thread\n");
-	}
+		_tc_error(server, "Error creating main thread\n");
 }
 
 void _tc_init_listener(t_server *server)

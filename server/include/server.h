@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 10:07:42 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:10:10 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ typedef struct s_server
 	pthread_mutex_t	*client_list_mutex;
 }				t_server;
 
+typedef struct s_thread_param
+{
+	t_server		*server;
+	t_client		*client;
+}				t_thread_param;
+
 /* ------------------------- FUNCTION ------------------------- */
 
 //			utils.c
@@ -112,5 +118,5 @@ void		_tc_remove_client(t_client **head, t_client *client);
 t_client	*_tc_find_client(t_client *head, int client_id);
 
 //			client/handler.c
-void		_tc_handler(t_server *server, t_client *client);
+void		*_tc_handler(void *param);
 #endif
