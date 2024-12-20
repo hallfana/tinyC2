@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:14:43 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:37:57 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ typedef struct sockaddr_in	t_sockaddr_in;
 
 typedef struct s_client
 {
-	int				client_id;
 	int				client_fd;
+	long			client_id;
 	pthread_t		*client_thread;
 	t_sockaddr_in	*client;
 	struct s_client	*next;
@@ -94,6 +94,7 @@ typedef struct s_thread_param
 //			utils.c
 int			_tc_strlen(char *str);
 int			_tc_nbrlen(int n);
+int			_tc_nbrlen_long(long n);
 
 //			print.c
 void		_tc_error(t_server *server, char *msg);
@@ -115,7 +116,7 @@ void		_tc_init_listener(t_server *server);
 //			client/linked_list.c
 void		_tc_add_client(t_client **head, t_client *client, pthread_mutex_t *mutex);
 void		_tc_remove_client(t_client **head, t_client *client, pthread_mutex_t *mutex);
-t_client	*_tc_find_client(t_client *head, int client_id, pthread_mutex_t *mutex);
+t_client	*_tc_find_client(t_client *head, long client_id, pthread_mutex_t *mutex);
 int			_tc_count_clients(t_client *head, pthread_mutex_t *mutex);
 
 //			client/handler.c

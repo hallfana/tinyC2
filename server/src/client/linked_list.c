@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:43:56 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:05:35 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:36:11 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	_tc_remove_client(t_client **head, t_client *client, pthread_mutex_t *mutex
 	pthread_mutex_unlock(mutex);
 }
 
-t_client	*_tc_find_client(t_client *head, int client_id, pthread_mutex_t *mutex)
+t_client	*_tc_find_client(t_client *head, long client_id, pthread_mutex_t *mutex)
 {
 	t_client	*tmp;
 

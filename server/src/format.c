@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 10:15:58 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:38:39 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,19 @@ char *_tc_format(t_server *server, char *fmt, ...)
 				}
 				i += _tc_nbrlen(n);
 				fmt++;
+			}
+			else if (*(fmt + 1) == 'l' && *(fmt + 2) == 'd')
+			{
+				long n = va_arg(args, long);
+				int j = _tc_nbrlen_long(n);
+				long temp = n;
+				while (j--)
+				{
+					str[i + j] = temp % 10 + '0';
+					temp /= 10;
+				}
+				i += _tc_nbrlen_long(n);
+				fmt += 2;
 			}
 		}
 		else

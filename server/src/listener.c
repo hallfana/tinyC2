@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 10:15:14 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:40:20 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ static void *_tc_accept_loop(void *arg)
 			new_client->client_fd = client_fd;
 			new_client->client = &client;
 			new_client->next = NULL;
+			str = _tc_format(server, "%s:%d:%d", inet_ntoa(client.sin_addr), ntohs(client.sin_port), client_fd);
+			new_client->client_id = _tc_sdbm_hash(str);
+			free(str);
 			client_thread = (pthread_t *)malloc(sizeof(pthread_t));
 			if (client_thread == NULL)
 			{

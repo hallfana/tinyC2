@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:31:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/20 23:59:54 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 00:41:04 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	*_tc_handler(void *param)
 	client = thread_param->client;
 	while (client->client_thread == NULL)
 	{
-		str = _tc_format(server, "Client %d is waiting for a thread\n", client->client_fd);
+		str = _tc_format(server, "Client %ld is waiting for a thread\n", client->client_id);
 		_tc_info(str);
 		free(str);
 	}
-	str = _tc_format(server, "Client %d connected\n", client->client_fd);
+	str = _tc_format(server, "Client %ld connected\n", client->client_id);
 	_tc_info(str);
 	free(str);
 	_tc_add_client(&server->client_list, client, server->client_list_mutex);

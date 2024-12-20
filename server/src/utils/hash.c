@@ -1,53 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nblen.c                                            :+:      :+:    :+:   */
+/*   hash.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 04:18:01 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:37:27 by hallfana         ###   ########.fr       */
+/*   Created: 2024/12/21 00:23:00 by hallfana          #+#    #+#             */
+/*   Updated: 2024/12/21 00:38:05 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/server.h"
 
-int	_tc_nbrlen(int n)
+long	_tc_sdbm_hash(char *str)
 {
-	int len;
+	long	hash;
+	int		c;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		len++;
-		n = -n;
-	}
-	while (n)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-int _tc_nbrlen_long(long n)
-{
-	int len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		len++;
-		n = -n;
-	}
-	while (n)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
+	hash = 0;
+	while ((c = *str++))
+		hash = c + (hash << 6) + (hash << 16) - hash;
+	return (hash);
 }
