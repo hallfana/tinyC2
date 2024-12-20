@@ -9,6 +9,7 @@ SRC= ./src/main.c \
 	 ./src/utils/nblen.c \
 	 ./src/print.c \
 	 ./src/cleanup.c \
+	 ./src/format.c \
 
 OBJ= $(SRC:.c=.o)
 
