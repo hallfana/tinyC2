@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 02:19:22 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 19:34:44 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void _tc_listen_server(t_server *server)
 
 	ret = listen(server->server_fd, _TC_SERVER_BACKLOG);
 	if (ret == -1)
-		_tc_error(server, "Error listening to server\n");	
+		_tc_error(server, "Error listening to server\n");
 	str = _tc_format(server, "Server listening on %s:%d\n", inet_ntoa(server->srv->sin_addr), ntohs(server->srv->sin_port));
 	_tc_info(str);
 	free(str);
