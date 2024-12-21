@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:40:20 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/21 02:18:24 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void *_tc_accept_loop(void *arg)
 	client_len = sizeof(client);
 	while (1)
 	{
+		client_thread = NULL;
+		client = (t_sockaddr_in){0};
 		client_fd = accept(server->server_fd, (t_sockaddr *)&client, &client_len);
 		if (client_fd == -1)
 			_tc_warning("Error accepting client\n");
