@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:23:00 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:38:05 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 00:56:45 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ long	_tc_sdbm_hash(char *str)
 	hash = 0;
 	while ((c = *str++))
 		hash = c + (hash << 6) + (hash << 16) - hash;
+	if (hash < 0)
+		hash *= -1;
 	return (hash);
 }
