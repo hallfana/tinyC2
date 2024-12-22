@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/22 01:06:56 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:09:50 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int		_tc_format_len(char *fmt, va_list args)
 {
-	long	n;
 	int		len;
 	int		i;
 
@@ -29,12 +28,7 @@ static int		_tc_format_len(char *fmt, va_list args)
 			else if (fmt[i + 1] == 'd')
 				len += _tc_nbrlen(va_arg(args, int));
 			else if (fmt[i + 1] == 'l' && fmt[i + 2] == 'd')
-			{
-				n = va_arg(args, long);
-				if (n < 0)
-					len--;
-				len += _tc_nbrlen_long(n);
-			}
+				len += _tc_nbrlen_long(va_arg(args, long));
 			i++;
 		}
 		else
