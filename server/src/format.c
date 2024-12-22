@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 19:30:33 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:00:16 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ char *_tc_format(t_server *server, char *fmt, ...)
 				int n = va_arg(args, int);
 				int j = _tc_nbrlen(n);
 				int temp = n;
+				if (n < 0)
+				{
+					str[i++] = '-';
+					temp = -n;
+					j--;
+				}
 				while (j--)
 				{
 					str[i + j] = temp % 10 + '0';
@@ -82,6 +88,12 @@ char *_tc_format(t_server *server, char *fmt, ...)
 				long n = va_arg(args, long);
 				int j = _tc_nbrlen_long(n);
 				long temp = n;
+				if (n < 0)
+				{
+					str[i++] = '-';
+					temp = -n;
+					j--;
+				}
 				while (j--)
 				{
 					str[i + j] = temp % 10 + '0';

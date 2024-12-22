@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/22 00:54:49 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 00:58:40 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void *_tc_debug_print(void *param)
 		t_client *tmp = server->client_list;
 		while (tmp != NULL)
 		{
-			printf("client_id: %ld\n", tmp->client_id);
+			//printf("client_id: %ld\n", tmp->client_id);
 			str = _tc_format(server, "╠ %ld | %s:%d\n", tmp->client_id, inet_ntoa(tmp->client->sin_addr), ntohs(tmp->client->sin_port));
 			write(1, str, _tc_strlen(str));
 			free(str);
