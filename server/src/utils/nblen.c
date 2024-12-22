@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 04:18:01 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 19:29:16 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:04:52 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	_tc_nbrlen(int n)
 	if (n == 0)
 		return (1);
 	if (n < 0)
-	{
-		len++;
 		n = -n;
-	}
 	while (n)
 	{
 		n /= 10;
@@ -40,10 +37,7 @@ int _tc_nbrlen_long(long n)
 	if (n == 0)
 		return (1);
 	if (n < 0)
-	{
-		len++;
 		n = -n;
-	}
 	while (n)
 	{
 		n /= 10;
