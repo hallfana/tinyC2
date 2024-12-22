@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:42:32 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 19:34:44 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:58:09 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ static void *_tc_accept_loop(void *arg)
 			_tc_warning("Error accepting client\n");
 		else
 		{
-			str = _tc_format(server, "Client connected from %s:%d\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
-			_tc_info(str);
-			free(str);
 			new_client = (t_client *)malloc(sizeof(t_client));
 			if (new_client == NULL)
 			{

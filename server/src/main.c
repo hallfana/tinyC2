@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:28 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/22 00:58:40 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:56:45 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int main(void)
 	_tc_init_server(&server);
 	_tc_init_listener(&server);
 
-	pthread_t debug_thread;
-	pthread_create(&debug_thread, NULL, _tc_debug_print, &server);
+	//pthread_t debug_thread;
+	//pthread_create(&debug_thread, NULL, _tc_debug_print, &server);
 	
 	while (1)
 	{

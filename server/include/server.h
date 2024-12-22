@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:37:25 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/21 00:42:23 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:55:44 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@
 
 # ifndef _TC_SERVER_BACKLOG
 #  define _TC_SERVER_BACKLOG 16
+# endif
+
+# ifndef _TC_SERVER_BUFFER_SIZE
+#  define _TC_SERVER_BUFFER_SIZE 1024
 # endif
 
 /* ------------------------- STRUCT ------------------------- */
