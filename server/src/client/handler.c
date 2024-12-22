@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:31:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/22 01:57:55 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:58:25 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	*_tc_handler(void *param)
 {
-	char	*str;
 	t_thread_param	*thread_param;
 	t_server		*server;
 	t_client		*client;
