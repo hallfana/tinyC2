@@ -20,7 +20,7 @@ re: clean all
 
 dev:
 	make fclean
-	git add .; git commit -m "dev"; git push
+	git add .; git commit -m "dev"; git push origin wtf-i-am-doing
 	make re
 	make clean
 	./$(NAME)-server
