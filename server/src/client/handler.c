@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:31:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/22 00:54:31 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:51:55 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,19 @@ void	*_tc_handler(void *param)
 	_tc_add_client(&server->client_list, client, server->client_list_mutex);
 	while (1)
 	{
-		pause();
+		char buffer[1024];
+		int bytes_read;
+
+		bytes_read = recv(client->client_fd, buffer, sizeof(buffer) - 1, 0);
+		if (bytes_read <= 0)
+		{
+			str = _tc_format(server, "Client %ld disconnected\n", client->client_id);
+			_tc_info(str);
+			free(str);
+			break;
+		}
+		buffer[bytes_read] = '\0';
+		_tc_info(buffer);
 	}
 	return (NULL);
 }
