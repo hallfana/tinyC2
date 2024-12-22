@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@proton.me>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 03:33:53 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/22 01:00:16 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/22 01:02:23 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,10 @@ char *_tc_format(t_server *server, char *fmt, ...)
 				int temp = n;
 				if (n < 0)
 				{
-					str[i++] = '-';
+					str[i] = '-';
 					temp = -n;
 					j--;
+					i++;
 				}
 				while (j--)
 				{
@@ -90,9 +91,10 @@ char *_tc_format(t_server *server, char *fmt, ...)
 				long temp = n;
 				if (n < 0)
 				{
-					str[i++] = '-';
+					str[i] = '-';
 					temp = -n;
 					j--;
+					i++;
 				}
 				while (j--)
 				{
